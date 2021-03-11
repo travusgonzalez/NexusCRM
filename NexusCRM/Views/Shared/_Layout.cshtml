@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Powered By NerdIT</title>
+
+    <!-- App Icons -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+
+    <!-- DataTables -->
+    <link href="~/Content/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Responsive datatable examples -->
+    <link href="~/Content/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- App css -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/icons.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/nerdit.css" rel="stylesheet">
+    
+
+    @RenderSection("styles", required: false)
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+    <!-- Navigation Bar-->
+    <header id="topnav">
+        <div class="topbar-main">
+            <div class="container-fluid">
+
+                <!-- Logo container-->
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Home")" class="logo">
+                        <i class="fa fa-odnoklassniki" style="height:30px;"></i> Nexus CRM
+                    </a>
+                </div>
+                <!-- End Logo container-->
+
+
+                <div class="menu-extras topbar-custom">
+
+                    <ul class="list-inline float-right mb-0">
+
+                        <!-- Fullscreen -->
+                        <li class="list-inline-item dropdown notification-list hide-phone">
+                            <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
+                                <i class="fa fa-arrows-alt"></i>
+                            </a>
+                        </li>
+                        <!-- User-->
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="false" aria-expanded="false">
+                                <i class="fa fa-gear"></i>
+                            </a>
+                            
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <a class="dropdown-item" href="@Url.Action("Index", "Manage")"><i class="fa fa-user-tie text-muted"></i> Profile</a>
+                                <a class="dropdown-item" href="#" onclick="alert('This page is under development. Please try again later.')"><i class="fa fa-tools text-muted"></i> Settings</a>
+                                <div class="dropdown-divider"></div>
+
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a class="dropdown-item" onclick="document.getElementById('logoutForm').submit()" href="#">
+                                        <i class="fa fa-sign-out-alt text-muted"></i> Logout
+                                    </a>
+                                }
+
+                            </div>
+                        </li>
+                        <li class="menu-item list-inline-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- end menu-extras -->
+
+                <div class="clearfix"></div>
+
+            </div> <!-- end container -->
+        </div>
+        <!-- end topbar-main -->
+        <!-- MENU Start -->
+        <div class="navbar-custom">
+            <div class="container-fluid">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Dashboard" ? "has-submenu active" : "test")">
+                            <a href="@Url.Action("Index", "Dashboard")"><i class="fa fa-chart-pie"></i>Dashboard</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Companies" ? "has-submenu active" : "test")">
+                            <a href="@Url.Action("Index", "Companies")"><i class="fa fa-building"></i>Companies</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "People" ? "has-submenu active" : "test")">
+                            <a href="@Url.Action("Index", "People")"><i class="fa fa-address-card"></i>People</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Opportunities" ? "has-submenu active last-elements" : "last-elements")">
+                            <a href="@Url.Action("Index", "Opportunities")"><i class="fa fa-handshake"></i>Opportunities</a>
+                        </li>
+                    </ul>
+                    <!-- End navigation menu -->
+                </div> <!-- end #navigation -->
+            </div> <!-- end container -->
+        </div> <!-- end navbar-custom -->
+    </header>
+    <!-- End Navigation Bar-->
+    <!-- Render Body -->
+    @RenderBody()
+    <!-- end Render Body -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    version @DateTime.Now.Year.@DateTime.Now.Month.@DateTime.Now.Day <span class="text-muted d-none d-sm-inline-block float-right">Powered by <a class="nerdit" href="https://nerdit.tech"><span id="green">//</span>NERD<span id="green">IT</span></a></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <script src="https://kit.fontawesome.com/b525ace5eb.js" crossorigin="anonymous"></script>
+    <!-- jQuery  -->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/js/modernizr.min.js"></script>
+    <script src="~/Content/js/waves.js"></script>
+    <script src="~/Content/js/jquery.slimscroll.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.js"></script>
+    <script src="~/Content/js/jquery.scrollTo.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+    <!-- App js -->
+    <script src="~/Content/js/app.js"></script>
+</body>
+</html>

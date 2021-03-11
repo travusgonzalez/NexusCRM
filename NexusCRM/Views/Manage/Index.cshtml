@@ -1,0 +1,58 @@
+﻿@model NexusCRM.Models.IndexViewModel
+@{
+    ViewBag.Title = "Nexus CRM > Manage";
+}
+
+<div class="wrapper">
+    <div class="container-fluid">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Manage Profile</h4>
+                </div>
+
+            </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+
+
+        <div class="row">
+            <div class="col-8">
+                <!-- Main Content -->
+
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h3>Account</h3>
+                        <hr />
+                        Email: @Model.Email
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <!-- Main Content -->
+
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h3>Controls</h3>
+                        <hr />
+                        <p class="text-success">@ViewBag.StatusMessage</p>
+
+                        @if (Model.HasPassword)
+                        {
+                            @Html.ActionLink("Change password", "ChangePassword")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Set password", "SetPassword")
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end container -->
+</div>
+<!-- end wrapper -->

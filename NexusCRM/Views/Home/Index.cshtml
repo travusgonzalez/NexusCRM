@@ -1,0 +1,407 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Nexus CRM - A Free CRM for Small Business</title>
+
+    <!-- App Icons -->
+    <link rel="shortcut icon" href="~/Content/frontend/images/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Quattrocento+Sans:400,700" rel="stylesheet" />
+
+    <!--Mobirise Icons-->
+    <link rel="stylesheet" type="text/css" href="~/Content/frontend/css/mobirise.css" />
+
+    <!-- Magnific-popup -->
+    <link rel="stylesheet" href="~/Content/frontend/css/magnific-popup.css">
+
+    <!--Material Design Icons-->
+    <link rel="stylesheet" type="text/css" href="~/Content/frontend/css/materialdesignicons.min.css" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/frontend/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/frontend/css/style.css" rel="stylesheet">
+    <link href="~/Content/frontend/css/nerdit.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/b525ace5eb.js" crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example" data-offset="20">
+
+    <!--START NAVBAR-->
+    <nav id="navbar-example" class="navbar navbar-expand-lg navbar-inverse navbar-toggleable-md fixed-top sticky navbar-custom">
+        <div class="container">
+            <a class="navbar-brand logo" href="#">
+                <span class="logo-text"><i class="fa fa-odnoklassniki" aria-hidden="true"></i> NEXUS CRM</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto" id="mySidenav">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#features" class="nav-link">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#shots" class="nav-link">Screenshots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--END NAVBAR-->
+    <!--START HOME-->
+    <section class="section home" id="home">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-white text-center">
+                    <h1 class="home-title">A Free CRM for Small Business</h1>
+                    <p class="mt-4 home-subtitle">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit. Porttitor sagittis, nascetur molestie, venenatis mus id dapibus tempus, mus nam faucibus.</p>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("Index", "Dashboard")" class="btn btn-primary mt-4">Open Dashboard</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Register", "Account")" class="btn btn-custom mt-4">Signup For Free</a>
+                        <a href="@Url.Action("Login", "Account")" class="btn btn-primary mt-4">Login</a>
+                    }
+
+                    <img src="~/Content/frontend/images/showcase.png" alt="" class="img-fluid" style="margin-top:50px; border-radius:10px 10px 0px 0px;">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--END HOME-->
+
+    <section class="section" id="features">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h3>App Features</h3>
+                        <p class="text-muted slogan">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-help text-custom"></i>
+                        <h5 class="pt-4">Strategy Solutions</h5>
+                        <p class="text-gray pt-2"> We put a lot of effort in design, as it’s the most important ingredient of successful website.Sed ut perspiciatis unde omnis istet.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-devices text-custom"></i>
+                        <h5 class="pt-4">Digital Design</h5>
+                        <p class="text-gray pt-2"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-cart-full text-custom "></i>
+                        <h5 class="pt-4">SEO</h5>
+                        <p class="text-gray pt-2"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-shopping-basket text-custom"></i>
+                        <h5 class="pt-4">Graphic Design</h5>
+                        <p class="text-gray pt-2"> We put a lot of effort in design, as it’s the most important ingredient of successful website.Sed ut perspiciatis unde omnis istet.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-cash text-custom"></i>
+                        <h5 class="pt-4">Analystics</h5>
+                        <p class="text-gray pt-2"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-sale text-custom "></i>
+                        <h5 class="pt-4">Dedicated Support</h5>
+                        <p class="text-gray pt-2"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-gift text-custom"></i>
+                        <h5 class="pt-4">Truly Multipurpose</h5>
+                        <p class="text-gray pt-2"> We put a lot of effort in design, as it’s the most important ingredient of successful website.Sed ut perspiciatis unde omnis istet.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-sun2 text-custom"></i>
+                        <h5 class="pt-4">Unlimited Colors</h5>
+                        <p class="text-gray pt-2"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 services-box">
+                    <div class="text-center p-3">
+                        <i class="mbri-android text-custom "></i>
+                        <h5 class="pt-4">Easy to customize</h5>
+                        <p class="text-gray pt-2"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section bg-grey" id="shots">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h3>Screenshots</h3>
+                        <p class="text-muted slogan">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/1.png" class="thumb preview-thumb image-popup" title="Screenshot-1">
+                        <img src="~/Content/frontend/images/screenshots/1.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/2.png" class="thumb preview-thumb image-popup" title="Screenshot-2">
+                        <img src="~/Content/frontend/images/screenshots/2.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/3.png" class="thumb preview-thumb image-popup" title="Screenshot-3">
+                        <img src="~/Content/frontend/images/screenshots/3.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/4.png" class="thumb preview-thumb image-popup" title="Screenshot-4">
+                        <img src="~/Content/frontend/images/screenshots/4.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/5.png" class="thumb preview-thumb image-popup" title="Screenshot-5">
+                        <img src="~/Content/frontend/images/screenshots/5.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/6.png" class="thumb preview-thumb image-popup" title="Screenshot-6">
+                        <img src="~/Content/frontend/images/screenshots/6.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/7.png" class="thumb preview-thumb image-popup" title="Screenshot-7">
+                        <img src="~/Content/frontend/images/screenshots/7.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/8.png" class="thumb preview-thumb image-popup" title="Screenshot-8">
+                        <img src="~/Content/frontend/images/screenshots/8.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="~/Content/frontend/images/screenshots/9.png" class="thumb preview-thumb image-popup" title="Screenshot-9">
+                        <img src="~/Content/frontend/images/screenshots/9.png" class="thumb-img" alt="work-thumbnail">
+                    </a>
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div>
+    </section>
+
+    <section class="section bg-custom">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h3 class="text-white">Signup For Free. No credit card required.</h3>
+                        <br />
+                        <a href="@Url.Action("Register", "Account")" class="btn btn-custom active">Sign Up Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section bg-grey text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-md-8 offset-md-2">
+                                            <div class="testimonial-box">
+                                                <div class="mb-4">
+                                                    <i class="mdi mdi-format-quote-open quote-icon"></i>
+                                                </div>
+                                                <h6 class="testimonial-team-desc mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h6>
+
+                                                <p class="testmonial-team-name">Albert Adorson</p>
+                                                <p class="testmonial-team-designation">CEO, Pic.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <div class="carousel-item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-md-8 offset-md-2">
+                                            <div class="testimonial-box">
+                                                <div class="mb-4">
+                                                    <i class="mdi mdi-format-quote-open quote-icon"></i>
+                                                </div>
+                                                <h6 class="testimonial-team-desc mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h6>
+
+                                                <p class="testmonial-team-name">Albert Adorson</p>
+                                                <p class="testmonial-team-designation">CEO, Pic.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <div class="carousel-item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-md-8 offset-md-2">
+                                            <div class="testimonial-box">
+                                                <div class="mb-4">
+                                                    <i class="mdi mdi-format-quote-open quote-icon"></i>
+                                                </div>
+                                                <h6 class="testimonial-team-desc mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h6>
+
+                                                <p class="testmonial-team-name">Albert Adorson</p>
+                                                <p class="testmonial-team-designation">CEO, Pic.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Form Section-->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h3>Get In Touch</h3>
+                        <p class="text-muted slogan">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <form class="">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="username">Name</label>
+                            <input type="text" class="form-control" id="username" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="useremail">Email address</label>
+                            <input type="email" class="form-control" id="useremail" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" rows="5" id="message"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-right">
+                        <button type="submit" class="btn btn-custom">Send Message</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!--END FORM-->
+    <!--start footer-->
+    <footer class="footer bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="float-right pull-none">
+                        <p class="copy-rights">Developed by <a class="nerdit" href="https://nerdit.tech"><span id="green">//</span>NERD<span id="green">IT</span></a></p>
+                    </div>
+                    <div class="pull-none">
+                        <p class="copy-rights">Nexus CRM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--END FOOTER-->
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="~/Content/frontend/js/jquery.min.js"></script>
+    <script src="~/Content/frontend/js/bootstrap.bundle.min.js"></script>
+    <!-- Sticky Header -->
+    <script src="~/Content/frontend/js/jquery.sticky.js"></script>
+    <!-- Jquery easing -->
+    <script src="~/Content/frontend/js/jquery.easing.min.js"></script>
+    <script src="~/Content/frontend/js/jquery.magnific-popup.min.js"></script>
+    <!--common script for all pages-->
+    <script src="~/Content/frontend/js/jquery.app.js"></script>
+</body>
+
+</html>
