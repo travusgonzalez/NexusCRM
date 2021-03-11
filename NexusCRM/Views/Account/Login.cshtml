@@ -1,0 +1,109 @@
+﻿@using NexusCRM.Models
+@model LoginViewModel
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Nexus CRM > Login - Powered By NerdIT</title>
+
+    <!-- App Icons -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+
+    <!-- Basic Css files -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/icons.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/nerdit.css" rel="stylesheet">
+
+</head>
+
+
+<body class="fixed-left">
+
+    <!-- Loader -->
+    <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+
+    <!-- Begin page -->
+    <div class="accountbg"></div>
+    <div class="wrapper-page">
+
+        <div class="card">
+            <div class="card-body">
+
+                <h3 class="text-center m-0">
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <a href="index.html" class="logo" style="color:steelblue;">
+                            <i class="fa fa-odnoklassniki" style="height:30px;color:steelblue;"></i> Nexus CRM
+                        </a>
+                    </div>
+                </h3>
+
+                <div class="p-3">
+                    <h4 class="font-18 m-b-5 text-center">Welcome Back !</h4>
+                    <p class="text-muted text-center">Sign in to continue to NexusCRM.</p>
+
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group row m-t-20">
+                            <div class="col-sm-6">
+                                <div class="custom-control custom-checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input" })
+                                    @Html.LabelFor(m => m.RememberMe, new { @class = "custom-control-label" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <button type="submit" class="btn btn-primary w-md waves-effect waves-light">Log In</button>
+                            </div>
+                        </div>
+
+                    }
+
+                    <div class="m-t-40 text-center">
+                        <p><a href="@Url.Action("ForgotPassword", "Account")" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a></p>
+                        <p class="text-white"> <a href="@Url.Action("Register", "Account")" class="font-500 font-14 text-white font-secondary">Don't have an account? Signup Free </a> </p>
+                        <p class="text-white">Developed by <a class="nerdit" href="https://nerdit.tech"><span id="green">//</span>NERD<span id="green">IT</span></a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- jQuery  -->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/js/modernizr.min.js"></script>
+    <script src="~/Content/js/jquery.slimscroll.js"></script>
+    <script src="~/Content/js/waves.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.js"></script>
+    <script src="~/Content/js/jquery.scrollTo.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- App js -->
+    <script src="~/Content/js/app.js"></script>
+
+</body>
+</html>

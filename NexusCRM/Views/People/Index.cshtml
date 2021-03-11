@@ -1,0 +1,82 @@
+﻿@model List<NexusCRM.Models.People>
+@{
+    ViewBag.Title = "Nexus CRM > People";
+}
+
+@section Styles {
+    <link href="~/Content/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/Content/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet">
+}
+
+@section Scripts {
+    <script src="~/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Content/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').DataTable();
+        });
+    </script>
+}
+
+<div class="wrapper">
+    <div class="container-fluid">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="pull-right">
+                        <a href="@Url.Action("Add", "People")" class="btn btn-success" style="float:right;"><i class="fa fa-user"></i> &nbsp; Add Person</a>
+                    </div>
+                    <h4 class="page-title">People</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+
+
+        <div class="row">
+            <div class="col-12">
+                <!-- Main Content -->
+
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <table id="datatable" class="table table-striped dt-responsive nowrap table-vertical" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Title</th>
+                                    <th>Company</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var p in Model)
+                                {
+                                    <tr>
+                                        <td><a href="https://www.linkedin.com/in/@p.LinkedIn" target="_blank">@p.FirstName @p.LastName</a></td>
+                                        <td>@p.Email</td>
+                                        <td>@p.Phone</td>
+                                        <td>@p.Title</td>
+                                        <td>@p.Companies.CompanyName</td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "People", new { id = p.PeopleID })" class="m-r-15 text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil-alt font-18"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end container -->
+</div>
+<!-- end wrapper -->

@@ -1,0 +1,82 @@
+﻿@model List<NexusCRM.Models.Opportunities>
+@{
+    ViewBag.Title = "Nexus CRM > Opportunities";
+}
+
+@section Styles {
+    <link href="~/Content/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/Content/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet">
+}
+
+@section Scripts {
+    <script src="~/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Content/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').DataTable();
+        });
+    </script>
+}
+
+<div class="wrapper">
+    <div class="container-fluid">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="pull-right">
+                        <a href="@Url.Action("Add", "Opportunities")" class="btn btn-success" style="float:right;"><i class="fa fa-handshake"></i> &nbsp; Add Opportunity</a>
+                    </div>
+                    <h4 class="page-title">Opportunities</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+
+
+        <div class="row">
+            <div class="col-12">
+                <!-- Main Content -->
+
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <table id="datatable" class="table table-striped dt-responsive nowrap table-vertical" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Stage</th>
+                                    <th>Value</th>
+                                    <th>Close Date</th>
+                                    <th>Source</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var o in Model)
+                                {
+                                    <tr>
+                                        <td>@o.Companies.CompanyName</td>
+                                        <td>@o.Stage</td>
+                                        <td>@o.Value</td>
+                                        <td>@o.CloseByDate</td>
+                                        <td>@o.Source</td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "Opportunities", new { id = o.OpportunitiesID })" class="m-r-15 text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil-alt font-18"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end container -->
+</div>
+<!-- end wrapper -->

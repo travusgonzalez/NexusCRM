@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+
+.nerdit {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+    color: #fff !important;
+}
+
+.nerdit #green {
+    color: #2ed573 !important;
+}
+

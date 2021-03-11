@@ -1,0 +1,340 @@
+﻿@model NexusCRM.Models.DashboardViewModel
+@{
+    ViewBag.Title = "Nexus CRM > Dashboard";
+}
+
+@section Styles {
+    <link href="~/Content/plugins/c3/c3.min.css" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    <script src="~/Content/plugins/peity-chart/jquery.peity.min.js"></script>
+    <script src="~/Content/plugins/d3/d3.min.js"></script>
+    <script src="~/Content/plugins/c3/c3.min.js"></script>
+    <script src="~/Content/plugins/jquery-knob/excanvas.js"></script>
+    <script src="~/Content/plugins/jquery-knob/jquery.knob.js"></script>
+    <!-- <script src="~/Content/pages/dashboard.js"></script> -->
+    <script>
+        !function($) {
+    "use strict";
+
+    var Dashboard = function() {};
+
+    Dashboard.prototype.init = function () {
+
+        // Peity line
+        $('.peity-line').each(function() {
+            $(this).peity("line", $(this).data());
+        });
+
+        //Knob chart
+        $(".knob").knob();
+
+        //C3 combined chart
+        c3.generate({
+            bindto: '#combine-chart',
+            data: {
+                columns: [
+                    ['Qualified', @Html.Raw(Model.TotalStageQualifiedValue)],
+                    ['Followup', @Html.Raw(Model.TotalStageFollowupValue)],
+                    ['Presentation', @Html.Raw(Model.TotalStagePresentationValue)],
+                    ['ContractSent', @Html.Raw(Model.TotalStageContractSentValue)],
+                    ['Negotiation', @Html.Raw(Model.TotalStageNegotiationValue)],
+                ],
+                type: 'bar',
+                colors: {
+                    Qualified: '#5468da',
+                    Followup: '#4ac18e',
+                    Presentation: '#ffbb44',
+                    ContractSent: '#ea553d',
+                    Negotiation: '#6d60b0'
+                },
+                groups: [
+
+                ]
+            },
+            axis: {
+                x: {
+                    show: false
+                }
+            }
+        });
+
+        //C3 Donut Chart
+        c3.generate({
+            bindto: '#donut-chart',
+            data: {
+                columns: [
+                    ['Qualified', @Html.Raw(Model.TotalStageQualified)],
+                    ['Followup', @Html.Raw(Model.TotalStageFollowup)],
+                    ['Presentation', @Html.Raw(Model.TotalStagePresentation)],
+                    ['ContractSent', @Html.Raw(Model.TotalStageContractSent)],
+                    ['Negotiation', @Html.Raw(Model.TotalStageNegotiation)]
+                ],
+                type : 'donut'
+            },
+            donut: {
+                title: "Active Stages",
+                width: 30,
+                label: {
+                    show:false
+                }
+            },
+            color: {
+                pattern: ["#5468da", "#4ac18e","#ffbb44", "#ea553d", "#6d60b0"]
+            }
+        });
+
+    },
+        $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
+
+}(window.jQuery),
+
+//initializing
+    function($) {
+        "use strict";
+        $.Dashboard.init()
+    }(window.jQuery);
+    </script>
+}
+
+<div class="wrapper">
+    <div class="container-fluid">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group pull-right">
+                        <ol class="breadcrumb hide-phone p-0 m-0">
+                            <li class="breadcrumb-item"><a href="dashboard.html">Nexus CRM</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Dashboard</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+
+        <div class="row">
+            <div class="col-12">
+                <!-- Main Content -->
+
+                <div class="row">
+                    <div class="col-md-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-white">
+                            <span class="mini-stat-icon bg-purple mr-0 float-right"><i class="fa fa-money-check-alt"></i></span>
+                            <div class="mini-stat-info">
+                                <span class="counter text-purple">@string.Format("{0:C}", Model.TotalOpportunityValue)</span>
+                                Total Opportunity Value
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-white">
+                            <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="fa fa-building"></i></span>
+                            <div class="mini-stat-info">
+                                <span class="counter text-blue-grey">@Model.TotalCompanies</span>
+                                Companies
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-white">
+                            <span class="mini-stat-icon bg-brown mr-0 float-right"><i class="fa fa-address-card"></i></span>
+                            <div class="mini-stat-info">
+                                <span class="counter text-brown">@Model.TotalPeople</span>
+                                People
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-white">
+                            <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="fa fa-handshake"></i></span>
+                            <div class="mini-stat-info">
+                                <span class="counter text-teal">@Model.TotalOpportunities</span>
+                                Opportunities
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-xl-9">
+
+                        <div class="row">
+                            <div class="col-md-11 pr-md-0">
+                                <div class="card m-b-20" style="height: 486px;border-radius: 0px;">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">Value of opportunities by stage</h4>
+
+                                        <div id="combine-chart" class="m-t-20"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 pl-md-0">
+                                <div class="card m-b-20" style="height: 486px; background-color: #2f3d46;border-radius: 0px;">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-3">
+                        <div class="card m-b-20">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title">Opportunities Overview</h4>
+
+                                <ul class="list-inline widget-chart m-t-20 m-b-15 text-center">
+                                    <li>
+                                        <h5 class="mb-0">@Model.TotalOpportunitiesWon</h5>
+                                        <p class="text-muted font-14">Won</p>
+                                    </li>
+                                    <li>
+                                        <h5 class="mb-0">@Model.TotalOpportunitiesLost</h5>
+                                        <p class="text-muted font-14">Lost</p>
+                                    </li>
+                                    <li>
+                                        <h5 class="mb-0">@Model.TotalOpportunitiesAbandoned</h5>
+                                        <p class="text-muted font-14">Abandoned</p>
+                                    </li>
+                                </ul>
+
+                                <div id="donut-chart"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card m-b-20">
+                            <div class="card-body">
+                                <h4 class="mt-0 m-b-30 header-title">Latest Opportunities</h4>
+
+                                <div class="table-responsive">
+                                    <table class="table table-vertical mb-0">
+
+                                        <tbody>
+
+                                            @foreach (var opps in Model.LatestOpportunities)
+                                            {
+                                                var color = "#ccc";
+                                                if(opps.Stage == "Qualified")
+                                                {
+                                                    color = "#5468da";
+                                                }
+                                                if (opps.Stage == "Followup")
+                                                {
+                                                    color = "#4ac18e";
+                                                }
+                                                if (opps.Stage == "Presentation")
+                                                {
+                                                    color = "#ffbb44";
+                                                }
+                                                if (opps.Stage == "ContractSent")
+                                                {
+                                                    color = "#ea553d";
+                                                }
+                                                if (opps.Stage == "Negotiation")
+                                                {
+                                                    color = "#6d60b0";
+                                                }
+
+                                                <tr>
+                                                    <td>
+                                                        @opps.ShortDescription
+                                                    </td>
+                                                    <td><i class="mdi mdi-checkbox-blank-circle" style="color:@color;"></i> @opps.Stage</td>
+                                                    <td>
+                                                        @string.Format("{0:C}", opps.Value)
+                                                        <p class="m-0 text-muted font-14">Value</p>
+                                                    </td>
+                                                    <td>
+                                                        @opps.CloseByDate
+                                                        <p class="m-0 text-muted font-14">Close By</p>
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Edit", "Opportunities", new { id = opps.OpportunitiesID })" class="m-r-15 text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil-alt font-18"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="card m-b-20">
+                            <div class="card-body">
+                                <h4 class="mt-0 m-b-30 header-title">Newest Companies</h4>
+
+                                <div class="table-responsive">
+                                    <table class="table table-vertical mb-0">
+
+                                        <tbody>
+
+                                            @foreach (var company in Model.NewestCompanies)
+                                            {
+                                                var badgeColor = "badge-default";
+                                                if(company.ContactType == "Potential Customer")
+                                                {
+                                                    badgeColor = "badge-primary";
+                                                }
+                                                if (company.ContactType == "Current Customer")
+                                                {
+                                                    badgeColor = "badge-success";
+                                                }
+                                                if (company.ContactType == "Other")
+                                                {
+                                                    badgeColor = "badge-secondary";
+                                                }
+
+                                                <tr>
+                                                    <td>@company.CompanyName</td>
+                                                    <td><span class="badge badge-pill @badgeColor">@company.ContactType</span></td>
+                                                    <td>
+                                                        @company.Phone
+                                                        <p class="m-0 text-muted font-14">Phone</p>
+                                                    </td>
+                                                    <td>
+                                                        <a href="https://@company.Website" target="_blank" style="color:#ddd;">@company.Website</a>
+                                                        <p class="m-0 text-muted font-14">Website</p>
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Edit", "Companies", new { id = company.CompaniesID })" class="m-r-15 text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil-alt font-18"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end container -->
+</div>
+<!-- end wrapper -->

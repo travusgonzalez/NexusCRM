@@ -1,0 +1,103 @@
+﻿@model NexusCRM.Models.RegisterViewModel
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Nexus CRM > Register - Powered By NerdIT</title>
+
+    <!-- App Icons -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+
+    <!-- Basic Css files -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/icons.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/nerdit.css" rel="stylesheet">
+
+</head>
+
+
+<body class="fixed-left">
+
+    <!-- Loader -->
+    <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+
+    <!-- Begin page -->
+    <div class="registerbg"></div>
+    <div class="wrapper-page">
+
+        <div class="card">
+            <div class="card-body">
+
+                <h3 class="text-center m-0">
+                    <div class="logo">
+                        <a href="index.html" class="logo" style="color:steelblue;">
+                            <i class="fa fa-odnoklassniki" style="height:30px;color:steelblue;"></i> Nexus CRM
+                        </a>
+                    </div>
+                </h3>
+
+                <div class="p-3">
+                    <h4 class="font-18 m-b-5 text-center">Register for free</h4>
+                    <p class="text-muted text-center">Get your free NexusCRM account now and organize your business for success.</p>
+
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group row m-t-20">
+                            <div class="col-12 text-right">
+                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>
+                            </div>
+                        </div>
+
+                    }
+
+                    <div class="m-t-40 text-center">
+                        <p class="text-white"><a href="@Url.Action("Login", "Account")" class="font-500 font-14 text-white font-secondary">Already have an account? Login.</a></p>
+                        <p class="text-white">Developed by <a class="nerdit" href="https://nerdit.tech"><span id="green">//</span>NERD<span id="green">IT</span></a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- jQuery  -->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/js/modernizr.min.js"></script>
+    <script src="~/Content/js/jquery.slimscroll.js"></script>
+    <script src="~/Content/js/waves.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.js"></script>
+    <script src="~/Content/js/jquery.scrollTo.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- App js -->
+    <script src="~/Content/js/app.js"></script>
+
+</body>
+</html>
